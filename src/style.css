@@ -11,7 +11,8 @@ body {
 }
 
 .leyenda {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    text-align: end;
 }
 
 .opciones {
@@ -39,6 +40,16 @@ body {
 .card h1 {
     font-size: 50cqh;
     font-family: 'Times New Roman', Times, serif;
+}
+
+.card h1.heart,
+.card h1.diamond {
+    color: red;
+}
+
+.card h1.spade,
+.card h1.club {
+    color: black;
 }
 
 .card h1::before,

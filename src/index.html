@@ -21,35 +21,44 @@
       </div>
 
       <div class="col-12 col-sm-6 mt-2 opciones mt-2">
-        <h6 id="cuenta-atras" class="alert alert-warning m-0"></h6>
 
-        <button id="generarCarta" class="btn btn-dark mt-4 w-100">Nueva carta</button>
+        <button id="generarCarta" class="btn btn-dark w-100">Nueva carta</button>
+        <h6 id="cuenta-atras" class="alert alert-warning mt-4"></h6>
 
-        <form id="form-dimensiones">
-          <div class="row g-4 my-0">
-            <div class="col-12 col-sm-6">
-              <div class="form-floating">
-                <input type="number" id="anchura" class="form-control" value="350" min="250" max="400"
-                  placeholder="350">
-                <label for="anchura">Anchura</label>
-                <p class="text-light leyenda">Anchura entre 250px y 400px</p>
-              </div>
-            </div>
-            <div class="col-12 col-sm-6">
-              <div class="form-floating">
-                <input type="number" id="altura" class="form-control" value="500" min="400" max="700" placeholder="500">
-                <label for="altura">Altura</label>
-                <p class="text-light leyenda">Altura entre 400px y 600px</p>
-              </div>
-            </div>
+        <div class="card text-center my-4">
+          <div class="card-header">
+            <h3 class="card-title">Tamaño de carta</h3>
           </div>
+          <form id="form-dimensiones" method="POST">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-floating">
+                    <input type="number" id="anchura" class="form-control" value="350" min="250" max="400"
+                      placeholder="350">
+                    <label for="anchura">Anchura</label>
+                    <p class="text-muted leyenda">Anchura entre 250px y 400px</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-floating">
+                    <input type="number" id="altura" class="form-control" value="500" min="400" max="700"
+                      placeholder="500">
+                    <label for="altura">Altura</label>
+                    <p class="text-muted leyenda">Altura entre 400px y 600px</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer justify-content-center">
+              <button type="submit" id="aplicar-dimension" class="btn btn-dark">
+                Aplicar tamaño
+              </button>
+              <button type="button" id="restablecer-valores" class="btn btn-danger">Restablecer valores</button>
+            </div>
 
-          <button type="submit" id="aplicar-dimension" class="btn btn-dark w-100 mb-2">
-            Aplicar dimensiones
-          </button>
-          <button type="button" id="restablecer-valores" class="btn btn-danger w-100 mb-3">Restablecer valores por
-            defecto</button>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
