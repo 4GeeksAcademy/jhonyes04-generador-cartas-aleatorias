@@ -21,11 +21,15 @@ const numerosCartas = [
 ];
 const palosCartas = ['heart', 'diamond', 'spade', 'club'];
 
-const TIEMPO = 10;
+const cartasGeneradas = [];
+
+const TIEMPO = 2;
 let tiempoRestante = TIEMPO;
 
 const ANCHURA_PREDETERMINADA = '350';
 const ALTURA_PREDETERMINADA = '500';
+
+const NUMERO_CARTAS = 8;
 
 const obtenerDatosCarta = () => {
     const numero = Math.floor(Math.random() * numerosCartas.length);
@@ -37,8 +41,56 @@ const obtenerDatosCarta = () => {
     };
 };
 
+const actualizarListaCartas = () => {
+    const listaCartas = document.getElementById('lista-cartas');
+    listaCartas.innerHTML = '';
+
+    cartasGeneradas.forEach((carta) => {
+        const color =
+            carta.palo === 'heart' || carta.palo === 'diamond'
+                ? 'text-danger'
+                : 'text-dark';
+        const palos = {
+            heart: '♥',
+            diamond: '♦',
+            spade: '♠',
+            club: '♣',
+        };
+
+        const columna = document.createElement('div');
+        columna.className = 'col';
+
+        columna.innerHTML = `
+            <div class="card h-100 text-center border-secondary ${color}">
+                <div class="card-body p-1">
+                    <div class="fw-bold">${carta.numero} - ${palos[carta.palo]}</div>
+                </div>
+            </div>
+        `;
+
+        listaCartas.appendChild(columna);
+    });
+};
+
+const guardarCartaGenerada = (carta) => {
+    const nuevaCarta = {
+        palo: carta.palo,
+        numero: carta.numero,
+    };
+
+    cartasGeneradas.push(nuevaCarta);
+
+    if (cartasGeneradas.length > NUMERO_CARTAS) {
+        cartasGeneradas.shift();
+    }
+
+    actualizarListaCartas();
+};
+
 const generarCarta = (contenedorCarta) => {
     const carta = obtenerDatosCarta();
+
+    guardarCartaGenerada(carta);
 
     contenedorCarta.textContent = carta.numero;
     contenedorCarta.className = '';
@@ -68,11 +120,12 @@ window.onload = function () {
     const btnGenerarCarta = document.getElementById('generarCarta');
 
     const formDimensiones = document.getElementById('form-dimensiones');
-    // const anchura = document.getElementById('anchura');
-    // const altura = document.getElementById('altura');
     const btnRestablecerValores = document.getElementById(
         'restablecer-valores',
     );
+
+    const numeroCartas = document.getElementById('numero-cartas');
+    numeroCartas.textContent = `Últimas ${NUMERO_CARTAS} cartas`;
 
     generarCarta(cardContent);
 

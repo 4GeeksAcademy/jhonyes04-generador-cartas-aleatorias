@@ -15,19 +15,18 @@
 <body>
   <!-- Write your HTML code here, you can delete everything withing the body tags -->
   <div class="container-fluid justify-content-center mt-5">
-    <div class="row justify-content-center min-w-1/3">
+    <div class="row justify-content-center align-items-center">
       <div id="card" class="col-12 col-sm-6 card">
         <h1 id="card-content"></h1>
       </div>
+      <div class="col-12 col-sm-6 mt-2 opciones">
+        <button id="generarCarta" class="btn btn-dark w-100 mt-2">Nueva carta</button>
 
-      <div class="col-12 col-sm-6 mt-2 opciones mt-2">
+        <h6 id="cuenta-atras" class="alert alert-warning mt-2"></h6>
 
-        <button id="generarCarta" class="btn btn-dark w-100">Nueva carta</button>
-        <h6 id="cuenta-atras" class="alert alert-warning mt-4"></h6>
-
-        <div class="card text-center my-4">
+        <div class="card text-center mt-2">
           <div class="card-header">
-            <h3 class="card-title">Tamaño de carta</h3>
+            <h5 class="card-title">Tamaño de carta</h5>
           </div>
           <form id="form-dimensiones" method="POST">
             <div class="card-body">
@@ -51,14 +50,25 @@
               </div>
             </div>
             <div class="card-footer justify-content-center">
-              <button type="submit" id="aplicar-dimension" class="btn btn-dark">
+              <button type="submit" id="aplicar-dimension" class="btn btn-dark col-12 col-sm-auto mb-2 mb-sm-0">
                 Aplicar tamaño
               </button>
-              <button type="button" id="restablecer-valores" class="btn btn-danger">Restablecer valores</button>
+              <button type="button" id="restablecer-valores"
+                class="btn btn-danger col-12 col-sm-auto mb-2 mb-sm-0">Restablecer
+                valores</button>
             </div>
-
           </form>
         </div>
+
+        <div class="card mt-2">
+          <div class="card-header text-center">
+            <h5 id="numero-cartas" class="card-title">Últimas cartas</h5>
+          </div>
+          <div class="card-body">
+            <div id="lista-cartas" class="row row-cols-4 g-2"></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
