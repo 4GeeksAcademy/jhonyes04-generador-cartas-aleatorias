@@ -1,5 +1,83 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-body{
-    background: white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: green;
+}
+
+.leyenda {
+    font-size: 0.8rem;
+}
+
+.opciones {
+    width: 400px;
+}
+
+#card {
+    container-type: size;
+    container-name: card;
+
+    min-width: 250px;
+    max-width: 400px;
+
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card h1 {
+    font-size: 50cqh;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.card h1::before,
+.card h1::after {
+    font-size: 25cqh;
+    position: absolute;
+}
+
+.card h1::before {
+    top: -5cqh;
+    left: 5cqw;
+}
+
+.card h1::after {
+    bottom: -5cqh;
+    right: 5cqw;
+    transform: rotate(180deg);
+}
+
+.card h1.heart::before,
+.card h1.heart::after {
+    content: '♥';
+    color: red;
+}
+
+.card h1.diamond::before,
+.card h1.diamond::after {
+    content: '♦';
+    color: red;
+}
+
+.card h1.spade::before,
+.card h1.spade::after {
+    content: '♠';
+    color: black;
+}
+
+.card h1.club::before,
+.card h1.club::after {
+    content: '♣';
+    color: black;
 }
