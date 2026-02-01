@@ -14,15 +14,15 @@
 
 <body>
   <!-- Write your HTML code here, you can delete everything withing the body tags -->
-  <div class="container-fluid justify-content-center mt-5">
-    <div class="row justify-content-center align-items-center">
-      <div id="card" class="col-12 col-sm-6 card">
+  <div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+      <div id="card" class="col-12 col-sm-6 card mt-2">
         <h1 id="card-content"></h1>
       </div>
-      <div class="col-12 col-sm-6 mt-2 opciones">
+      <div class="col-12 col-sm-6 opciones">
         <button id="generarCarta" class="btn btn-dark w-100 mt-2">Nueva carta</button>
 
-        <h6 id="cuenta-atras" class="alert alert-warning mt-2"></h6>
+        <h6 id="cuenta-atras" class="alert alert-warning mt-2 mb-0"></h6>
 
         <div class="card text-center mt-2">
           <div class="card-header">
@@ -33,18 +33,18 @@
               <div class="row">
                 <div class="col-6">
                   <div class="form-floating">
-                    <input type="number" id="anchura" class="form-control" value="350" min="250" max="400"
+                    <input type="number" id="anchura" class="form-control" value="350" min="100" max="400"
                       placeholder="350">
                     <label for="anchura">Anchura</label>
-                    <p class="text-muted leyenda">Anchura entre 250px y 400px</p>
+                    <p id="anchura-leyenda" class="text-muted leyenda m-0">Anchura entre 250px y 400px</p>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-floating">
-                    <input type="number" id="altura" class="form-control" value="500" min="400" max="700"
+                    <input type="number" id="altura" class="form-control" value="500" min="150" max="600"
                       placeholder="500">
                     <label for="altura">Altura</label>
-                    <p class="text-muted leyenda">Altura entre 400px y 600px</p>
+                    <p id="altura-leyenda" class="text-muted leyenda m-0">Altura entre 400px y 600px</p>
                   </div>
                 </div>
               </div>
@@ -65,7 +65,7 @@
             <h5 id="numero-cartas" class="card-title">Últimas cartas</h5>
           </div>
           <div class="card-body">
-            <div id="lista-cartas" class="row row-cols-4 g-2"></div>
+            <div id="lista-cartas" class="row row-cols-5 g-1"></div>
           </div>
         </div>
 

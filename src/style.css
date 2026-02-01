@@ -23,13 +23,13 @@ body {
     container-type: size;
     container-name: card;
 
-    min-width: 250px;
+    min-width: 50px;
     max-width: 400px;
 
     width: 350px;
     height: 500px;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -72,23 +72,23 @@ body {
 .card h1.heart::before,
 .card h1.heart::after {
     content: '♥';
-    color: red;
+    /* color: red; */
 }
 
 .card h1.diamond::before,
 .card h1.diamond::after {
     content: '♦';
-    color: red;
+    /* color: red; */
 }
 
 .card h1.spade::before,
 .card h1.spade::after {
     content: '♠';
-    color: black;
+    /* color: black; */
 }
 
 .card h1.club::before,
 .card h1.club::after {
     content: '♣';
-    color: black;
+    /* color: black; */
 }

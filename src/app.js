@@ -4,7 +4,7 @@ import './style.css';
 import './assets/img/rigo-baby.jpg';
 import './assets/img/4geeks.ico';
 
-const numerosCartas = [
+const NUMEROS_CARTAS = [
     'A',
     '2',
     '3',
@@ -19,25 +19,31 @@ const numerosCartas = [
     'Q',
     'K',
 ];
-const palosCartas = ['heart', 'diamond', 'spade', 'club'];
-
-const cartasGeneradas = [];
-
-const TIEMPO = 2;
-let tiempoRestante = TIEMPO;
+const PALOS_CARTAS = ['heart', 'diamond', 'spade', 'club'];
+const PALOS_ICONS = {
+    heart: '♥',
+    diamond: '♦',
+    spade: '♠',
+    club: '♣',
+};
 
 const ANCHURA_PREDETERMINADA = '350';
 const ALTURA_PREDETERMINADA = '500';
 
-const NUMERO_CARTAS = 8;
+const TIEMPO = 10;
+let tiempoRestante = TIEMPO;
+
+const ULTIMAS_CARTAS = 15;
+
+const cartasGeneradas = [];
 
 const obtenerDatosCarta = () => {
-    const numero = Math.floor(Math.random() * numerosCartas.length);
-    const palo = Math.floor(Math.floor(Math.random() * palosCartas.length));
+    const numero = Math.floor(Math.random() * NUMEROS_CARTAS.length);
+    const palo = Math.floor(Math.floor(Math.random() * PALOS_CARTAS.length));
 
     return {
-        numero: numerosCartas[numero],
-        palo: palosCartas[palo],
+        numero: NUMEROS_CARTAS[numero],
+        palo: PALOS_CARTAS[palo],
     };
 };
 
@@ -50,12 +56,6 @@ const actualizarListaCartas = () => {
             carta.palo === 'heart' || carta.palo === 'diamond'
                 ? 'text-danger'
                 : 'text-dark';
-        const palos = {
-            heart: '♥',
-            diamond: '♦',
-            spade: '♠',
-            club: '♣',
-        };
 
         const columna = document.createElement('div');
         columna.className = 'col';
@@ -63,7 +63,7 @@ const actualizarListaCartas = () => {
         columna.innerHTML = `
             <div class="card h-100 text-center border-secondary ${color}">
                 <div class="card-body p-1">
-                    <div class="fw-bold">${carta.numero} - ${palos[carta.palo]}</div>
+                    <div class="fw-bold">${carta.numero} - ${PALOS_ICONS[carta.palo]}</div>
                 </div>
             </div>
         `;
@@ -80,7 +80,7 @@ const guardarCartaGenerada = (carta) => {
 
     cartasGeneradas.push(nuevaCarta);
 
-    if (cartasGeneradas.length > NUMERO_CARTAS) {
+    if (cartasGeneradas.length > ULTIMAS_CARTAS) {
         cartasGeneradas.shift();
     }
 
@@ -100,8 +100,8 @@ const generarCarta = (contenedorCarta) => {
 };
 
 const temporizador = (contenedorCarta, cuentaAtras) => {
+    tiempoRestante <= 1 ? generarCarta(contenedorCarta) : tiempoRestante--;
     cuentaAtras.textContent = `Siguiente carta en: ${tiempoRestante}`;
-    tiempoRestante <= 0 ? generarCarta(contenedorCarta) : tiempoRestante--;
 
     setTimeout(() => temporizador(contenedorCarta, cuentaAtras), 1000);
 };
@@ -124,8 +124,16 @@ window.onload = function () {
         'restablecer-valores',
     );
 
+    const anchura = document.getElementById('anchura');
+    const altura = document.getElementById('altura');
+
+    const anchuraLeyenda = document.getElementById('anchura-leyenda');
+    const alturaLeyenda = document.getElementById('altura-leyenda');
+    anchuraLeyenda.textContent = `Anchura entre ${anchura.min}px y ${anchura.max}px`;
+    alturaLeyenda.textContent = `Altura entre ${altura.min}px y ${altura.max}px`;
+
     const numeroCartas = document.getElementById('numero-cartas');
-    numeroCartas.textContent = `Últimas ${NUMERO_CARTAS} cartas`;
+    numeroCartas.textContent = `Últimas ${ULTIMAS_CARTAS} cartas`;
 
     generarCarta(cardContent);
 
@@ -134,11 +142,8 @@ window.onload = function () {
     formDimensiones.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        const nuevaAnchura = document.getElementById('anchura').value;
-        const nuevaAltura = document.getElementById('altura').value;
-
-        if (nuevaAnchura) card.style.width = `${nuevaAnchura}px`;
-        if (nuevaAltura) card.style.height = `${nuevaAltura}px`;
+        if (anchura.value) card.style.width = `${anchura.value}px`;
+        if (altura.value) card.style.height = `${altura.value}px`;
     });
 
     btnGenerarCarta.addEventListener('click', () => {
